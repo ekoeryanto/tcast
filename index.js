@@ -103,8 +103,8 @@ class TCast {
       total: {
         success: data.success,
         fail: data.fail,
-        result: resultMap
-      }
+      },
+      result: resultMap
     }
   }
 

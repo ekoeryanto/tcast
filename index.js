@@ -1,5 +1,4 @@
 const axios = require('axios')
-const { Agent } = require('https');
 
 const statusMap = {
   '0': 'success',
@@ -22,9 +21,6 @@ const statusMap = {
 class TCast {
   constructor(baseURL, credentials) {
     this.api = axios.create({
-      httpsAgent: new Agent({
-        rejectUnauthorized: false
-      }),
       baseURL
     })
 

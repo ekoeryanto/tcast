@@ -19,9 +19,10 @@ const statusMap = {
 }
 
 class TCast {
-  constructor(baseURL, credentials) {
+  constructor(baseURL, credentials, requestConfig) {
     this.api = axios.create({
-      baseURL
+      baseURL,
+      ...requestConfig
     })
 
     this.api.interceptors.request.use(config => {

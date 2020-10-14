@@ -1,12 +1,16 @@
 {
   "name": "tcast",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "TCast SMS Indonesia client library.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["TCast", "SMS", "Indonesia"],
+  "keywords": [
+    "TCast",
+    "SMS",
+    "Indonesia"
+  ],
   "author": "Eko Eryanto <ekoeryanto@gmail.com>",
   "license": "ISC",
   "dependencies": {

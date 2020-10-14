@@ -21,8 +21,6 @@ const statusMap = {
 
 class TCast {
   constructor(baseURL, credentials) {
-    const {account, password, sender} = credentials
-
     this.api = axios.create({
       httpsAgent: new Agent({
         rejectUnauthorized: false
@@ -34,18 +32,14 @@ class TCast {
       if (config.method === 'get') {
         config.params = {
           ...config.params,
-          account,
-          password,
-          sender
+          ...credentials
         }
       }
 
-      if (config.method === 'post') {
+      if (['post', 'put', 'patch'].includes(config.method)) {
         config.data = {
           ...config.data,
-          account,
-          password,
-          sender
+          ...credentials
         }
       }
       return config
@@ -136,7 +130,7 @@ class TCast {
       return { id, number, time: this.parseTime(time), message}
     })
 
-    return  { total: data.cnt, messages: messagesMap }
+    return  { total: data.cnt, result: messagesMap }
   }
 
   async reports (ids) {
@@ -177,8 +171,8 @@ class TCast {
         sending,
         notFound: nofound,
         fail,
-        reports: reportsMap
-      }
+      },
+      result: reportsMap
     }
   }
 }

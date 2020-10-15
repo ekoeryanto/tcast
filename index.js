@@ -68,6 +68,12 @@ class TCast {
     return new Date(dateTime).toISOString().replace(/\D+/g, '').slice(0, 14)
   }
 
+  b64Decode(b64s) {
+    return globalThis.atob
+      ? globalThis.atob(b64s)
+      : Buffer.from(b64s, 'base64').toString()
+  }
+
   async send(numbers, content, schedule) {
     if (Array.isArray(numbers)) {
       numbers = numbers.join(',')
@@ -124,7 +130,7 @@ class TCast {
 
     const messagesMap = data.array.map(msg => {
       const [id, number, time, message] = msg
-      return { id, number, time: this.parseTime(time), message}
+      return { id, number, time: this.parseTime(time), message: this.b64Decode(message)}
     })
 
     return  { total: data.cnt, result: messagesMap }

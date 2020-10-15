@@ -120,11 +120,8 @@ class TCast {
     }
   }
 
-  async messages(start_time) {
-    const params = {
-      start_time,
-    }
-    const { data } = await this.api.get('/getsms', { params })
+  async messages() {
+    const { data } = await this.api.get('/getsms')
 
     this.verifyStatus(data)
 
